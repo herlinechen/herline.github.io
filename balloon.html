@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+	<title>css3 唯美气球</title>
+	<meta charset='utf-8' />
+	<style>
+		html{
+			height: 100%;
+		}
+		body{
+			margin:0;width:100%;height:100%;
+			background-color:#ccc;
+			font-size:16px;
+		}
+		p, ul{margin:0;padding:0;}
+		li{list-style:none;}
+		.note{
+			width: 900px;
+			margin:0 auto;
+			text-align: center;
+			line-height:40px;
+		}
+		.note p{
+			font-weight: bold;
+		}
+		.note li{
+			text-shadow: 1px 1px 5px #fff;
+		}
+		.balloonwrap{
+			display: flex;
+			position: absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			overflow: hidden;
+		}
+		.balloon{
+			width:160px;height:160px;
+			background:#fff;
+			border-radius: 160px 160px 64px 160px;
+			transform:rotateZ(45deg) translate(400px,400px);
+			box-shadow: -8px -8px 80px -8px #873940 inset;
+			animation: animate 1s ease-out infinite;
+			animation-play-state: running;
+		}
+		.balloon:hover{
+			animation-play-state: paused;
+		}
+		.b1{
+			margin:20px 10px;
+			animation-delay:0.2s;
+		}
+		.b2{ margin:0;
+			animation-delay:0.3s;
+		}
+		.b3{ margin: 90px 30px;
+			animation-delay:0.6s;
+		}
+		.b4{ margin: 45px 30px;
+			animation-delay:0.4s;
+		}
+		.b5{ margin:0;
+			animation-delay:0.9s;
+		}
+		.b6{ margin:70px 10px;
+			animation-delay:1s;
+		}
+		.b7{ margin:0;
+			animation-delay:0.2s;
+		}
+
+		.balloon::after{
+			display: block;
+			content: '';
+			width: 0px;
+			height:0px;
+			border: 8px solid transparent;
+			border-right-color:#873940;
+			transform:translate(142px,142px) rotate(45deg);
+			border-radius: 16px;
+		}
+		@keyframes animate {
+			0% {
+				transform: rotateZ(45deg) translate(400px, 400px);
+				opacity: 1;
+			}
+			80% {
+				opacity: .9;
+			}
+			100% {
+				transform: rotateZ(45deg) translate(-100px,-100px);
+				opacity: 0;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class='note'>
+		<p>效果涉及到的css样式属性：</p>
+		<ul>
+			<li>flex</li>
+			<li>border-radius</li>
+			<li>box-shadow</li>
+			<li>::after</li>
+			<li>perspective</li>
+			<li>transform: translate</li>
+			<li>transform: rotate</li>
+			<li>@keyframes</li>
+			<li>animation</li>
+			<li>animation-play-state</li>
+		</ul>
+	</div>
+	<div class='balloonwrap'>
+		<div class='balloon b1'></div>
+		<div class='balloon b2'></div>
+		<div class='balloon b3'></div>
+		<div class='balloon b4'></div>
+		<div class='balloon b5'></div>
+		<div class='balloon b6'></div>
+		<div class='balloon b7'></div>
+	</div>
+	
+	
+</body>
+</html>

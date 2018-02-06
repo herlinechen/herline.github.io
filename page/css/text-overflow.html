@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>text-overflow属性</title>
+	<style>
+		body, ul, ol ,p {margin:0;padding:0;}
+		.test1{ height:100px;font-size:18px;line-height:24px;width:300px;white-space:nowrap;}
+		.test1 p {overflow:hidden;text-overflow:ellipsis;}
+
+		.test2{position:relative;width:300px;height:100px;font-size:18px;line-height:24px;overflow: hidden;}
+		.test2:after{position:absolute;bottom:4px;right:12px;content:'....';background:#fff;}
+
+
+		.test4{width:300px;font-size:18px;line-height:24px;}
+		.test4 p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow: hidden;}
+	</style>
+</head>
+<body>
+	<div class='test1'>
+		<p>这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内ssgsgdgs容这是内容这egegsd是内容这是内容这是内容这是内容这是内容这是内容这是内sfaf容这是内容这是内容这是dsdgsg内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容dgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这egdgs容这是内容这eg</p>
+	</div>
+	<div class='test2'>
+		<p>这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内ssgsgdgs容这是内容这egegsd是内容这是内容这是内容这是内容这是内容这是内容这是内sfaf容这是内容这是内容这是dsdgsg内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容d</p>
+	</div>
+
+	<div class='test4'>
+		<p>这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内ssgsgdgs容这是内容这egegsd是内容这是内容这是内容这是内容这是内容这是内容这是内sfaf容这是内容这是内容这是dsdgsg内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容d</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title>animation属性</title>
+	<meta charset='utf-8' />
+	<style>
+		html{height:100%;}
+		body{display:flex;margin:0;height:100%;}
+		div{width:600px;height:300px;margin:auto;border:2px solid #999;background:#eee;}
+		span{display:block;height:50px;color:#333;font-size:24px;line-height:40px;font-weight:bold;
+			transform: translateX(0);
+			animation-play-state: running;
+			animation: animate 1s ease 1s infinite alternate;
+		}
+		span:hover{
+			animation-play-state: paused;
+		}
+		@keyframes animate {
+			0%{
+				transform: translateX(0);
+				opacity:1;
+			}
+			50% {
+				opacity:0;
+			}
+			100% {
+				transform: translateX(50%);
+				opacity:1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span>CSS3 animation属性</span>
+	</div>
+</body>
+</html>

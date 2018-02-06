@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>属性选择器</title>
+		<style>
+			body{margin:0;font-size:16px;color:#333;}
+			a{text-decoration: none;color:#333;}
+			ul a[href]{
+				color:red;
+			}
+			ul a[class]{
+				color:blue;
+			}
+			ul a[class^="a"]{    /*以字符a开头*/
+				color:green;
+			}
+			ul a[class$="b"]{  /*以字符b结尾*/
+				color:yellow;
+			}
+			ul a[class*="b"]{  /*含有字符b*/
+				color:#a9a9a9;
+			}
+			ul a[class~="aaa"]{ /*含有单词aaa*/
+				color:#ff00f0;
+			}
+			ul a[title]{   
+			 /*写了属性但是没有写值的，也会选中在内*/
+				color:#00ff0f;
+			}
+			ul a[title|='aaa']{
+				/*以aaa开头以-连字的*/
+				color:#00fff0;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a href="" class="">111111111111</a></li>
+			<li><a href="" class="aaa">2222222222222</a></li>
+			<li><a href="" class="aab">333333333333</a></li>
+			<li><a href="" class="aac">44444444444444</a></li>
+			<li><a href="" class="aba">5555555555555</a></li>
+			<li><a href="" class="aca aaa">6666666666666666</a></li>
+			<li><a href="" title="">777777777777777</a></li>
+			<li><a href="" title="aaa-bbbbbb">8888888888888</a></li>
+		</ul>
+	</body>
+</html>

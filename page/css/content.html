@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>content属性</title>
+	<style>
+		body, ul, ol {margin:0;padding:0;}
+		ul,ol {list-style:none;}
+		.ul1 li{counter-increment:testname;}
+		.ul1 li:before {content:counter(testname)".";color:red;font-size:18px;line-height:30px;}
+		.ul1 .last:after{content: attr(title);}
+		.ul1 .imgcontent {width: 100px;content:url(images/star.jpg);}
+
+		.ul2 li{counter-increment:testname2;}
+		.ul2 li:before{content:counter(testname2, lower-roman)".";}
+
+		.ul3{counter-reset:testname3;}
+		.ul3 li:before{content:counter(testname3)" ";counter-increment: testname3}
+		.ul3 li li{margin-left:20px;counter-increment:testname4;}
+		.ul3 li li:before{content:counter(testname4,decimal)" ";}
+		.noincrement li{counter-increment: none}
+		.none{display:none;}
+	</style>
+</head>
+<body>
+	<ul class='ul1'>
+		<li class='imgcontent'>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li class='last' title='第五个列表项'>5</li>
+	</ul>
+	<ul class='ul2'>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<ol class='ul3'>
+		<li>
+			<!-- <ol>
+				<li>1111111111111</li>
+				<li>2222222222222</li>
+			</ol> -->
+		</li>
+		<li class='none'>sdgssgsgsgs</li>
+		<li>
+			<!-- <ol>
+				<li>33333333</li>
+				<li>44444</li>
+				<li>555555555</li>
+			</ol> -->
+		</li>
+		<li>gsdgsg</li>
+		<li>sgsgsg</li>
+	</ol>
+	<ul class='ul1 noincrement'>
+		<li>sdgsgsg</li>
+		<li>sdgsgsg</li>
+		<li>sdgsgsg</li>
+		<li>sdgsgsg</li>
+	</ul>
+</body>
+</html>

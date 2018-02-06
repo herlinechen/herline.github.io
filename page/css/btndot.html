@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>等待按钮的三个点点点</title>
+	<style>
+		body{margin:0;}
+		.demo1 a{
+			position: relative;
+			display:inline-block;
+			text-decoration: none;
+			padding:10px 22px 10px 10px;
+			background:blue;
+			color:#fff;
+		}
+		.demo1 a::after{
+			position:absolute;
+			bottom:8px;
+			right:10px;
+			width:12px;
+			overflow: hidden;
+			content: "...";
+			text-indent: -8px;
+			animation: dot 1s infinite step-start;
+		}
+		@keyframes dot {
+			33% {
+				text-indent: -4px;
+			}
+			66%{
+				text-indent: 0px;
+			}
+		}
+		.ind{ text-indent: 24px;}
+	</style>
+</head>
+<body>
+	<p class="ind">段落段落段落段落段落</p>
+	<span  class="pos_abs ind">行内行内行内行内</span>
+	<div class="demo1">
+		<a href="">订单提交中</a>
+	</div>
+</body>
+</html>

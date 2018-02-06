@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>伪类选择器</title>
+		<style>	
+
+			/*  reset
+			
+			input:focus, textarea:focus, select:focus{
+				outline:none;
+			}
+
+
+
+			*/
+
+			a:link{color:#f00;}  /*未被访问过 IE下有显示，但不显示visited*/
+
+			a:visited{color:#00eefe;} /* 被访问过 被访问过就无法再回到:link状态下了。按lvha的顺序*/
+
+			a:hover{color:#0f0;}  /* 悬停时
+			悬停时样式，离开后回到visited或link状态*/
+
+			a:active{color:#ffe000;} /* 鼠标按下时(点击后会回到访问过的状态，无法回到:link状态了)
+
+			点击前在鼠标悬停状态(hover)下，点击时(鼠标按下)在active状态下，点击后(鼠标放开)回到visited状态。点击后回到visited状态，稍稍移动鼠标会进入hover状态*/
+			input:focus{
+				border:1px solid red;
+				outline:none;
+				/*设置对象在成为输入焦点时的样式。Webkit内核浏览器会默认给:focus状态的元素加上outline的样式。可在样式重置的时候去掉*/
+			}
+			input[type='checkbox']{
+				margin:0;
+			}
+			input[type='checkbox']:focus{
+				border:1px solid red;
+				outline:none;
+			}
+			select:focus{
+				border:1px solid red;
+				outline:none;
+				/*select元素的focus状态，在webkit内核的浏览器下有默认outline样式，需去掉。在moz内核下没有默认样式。在IE下只设置focus无法改变边框颜色*/
+			}
+			textarea{
+				padding:0;
+			}
+			textarea:focus{
+				border:1px solid red;
+				outline:none;
+				/*textarea同input输入框*/
+			}
+
+			.divide:hover{
+				/*border:1px solid red;*/
+			}
+
+			.content p:first-child{
+				color:red;
+			}
+			.content span:first-child{
+				color:blue;  
+				/*不生效，因为.content下的first-child是p元素，而不是span元素。由此可见子元素伪类查找是从右往左的顺序：先找父元素的first-child，再匹配其是否为指定的标签，若是，则样式生效；若不是，则样式不生效。可用:first-of-type来查找父元素下的第一个指定标签的子元素*/
+			}
+			.content span:first-of-type{
+				color:#356f4a;
+			}
+
+
+			.content a:nth-child(1){
+				color:red;
+				/*生效*/
+			}
+			.content a:nth-child(2){
+				color:red;
+				/*生效*/
+			}
+			
+			.content a:nth-child(3){
+				color:red;
+				/*不生效   .content下的第三个子元素为p，并不是a*/
+			}
+			.content a:nth-child(4){
+				color:red;
+				/*不生效  .content下的第四个子元素为p，并不是a。即nth-child(n)中的n按父元素的子元素序列依次递增，然后再匹配对应标签。同first-child*/
+			}
+			.content a:nth-child(5){
+				color:red;
+				/*生效。 .content的第五元素正好是a，匹配成功。*/
+			}
+			.content a + a{
+				color:blue;
+				/*弟弟选择器、相邻选择器 比 子元素伪类选择器优先级要 低  */
+			}
+			.content :empty{
+				height:25px;border:1px solid red;
+			}
+
+			.test{
+				position:relative;
+				width:700px;
+			}
+			.test .hd{padding:10px 0;}
+			.test .nav{position:absolute;top:0;right:0;}
+			.test .nav a{display:block;margin: 10px 0;}
+			.test .bd .panel{width:500px;margin-top:5px;border:1px solid #ddd;}
+			.test .bd h2{border-bottom:1px solid #ddd;}
+			.test .bd :target{border-color:#f60;}
+			.test .bd :target h2{border-color:#f60;}
+			h2,p{margin:0;padding:10px;font-size:16px;}
+
+			/*:target 为查找父元素下当前被命中的元素*/
+
+		</style>
+	</head>
+	<body>
+		<a>111111111111</a>
+		<a href="">111111111111</a>
+		<ul>
+			<li><a href="" class="">111111111111</a></li>
+			<li><a href="" class="aaa">2222222222222</a></li>
+			<li><a href="" class="aab">333333333333</a></li>
+			<li><a href="" class="aac">44444444444444</a></li>
+			<li><a href="" class="aba">5555555555555</a></li>
+			<li><a href="" class="aca aaa">6666666666666666</a></li>
+			<li><a href="" title="">777777777777777</a></li>
+			<li><a href="" title="aaa-bbbbbb">8888888888888</a></li>
+		</ul>
+		<input class='inp' type='text' name='name' />
+		<select>
+			<option>11111</option>
+			<option>22222</option>
+			<option>33333</option>
+		</select>
+		<textarea>文本域输入框</textarea>
+		<input type='checkbox' name='chb1' value='1' />
+		<input type='checkbox' name='chb1' value='2' />
+		<input type='checkbox' name='chb1' value='3' />
+		<input type='checkbox' name='chb1' value='4' />
+		<div class="divide">块元素块元素块元素块元素块元素</div>
+		<div class="content">
+			<a href="">链接链接链接链接链接AAAAAA</a>
+			<a href="">链接链接链接链接链接BBBBBB</a>
+			<p>段落段落段落段落段落段落1111</p>
+			<span>行内元素行内元素行内元素aaaa</span>
+			<a href="">链接链接链接链接链接CCCCCC</a>
+			<span>行内元素行内元素行内元素bbbb</span>
+			<span>行内元素行内元素行内元素cccc</span>
+			<p>段落段落段落段落段落段落2222</p>
+			<a href="">链接链接链接链接链接DDDDDD</a>
+			<a href="">链接链接链接链接链接DDDDDD</a>
+			<p>段落段落段落段落段落段落3333</p>
+			<p>段落段落段落段落段落段落4444</p>
+			<a href="">链接链接链接链接链接DDDDDD</a>
+			<p></p>
+		</div>
+		<div class="test">
+			<div class="hd nav">
+				<a href="#panel1">前往区块1</a>
+				<a href="#panel2">前往区块2</a>
+				<a href="#panel3">前往区块3</a>
+				<a href="#panel4">前往区块4</a>
+				<a href="#panel5">前往区块5</a>
+				<a href="#panel6">前往区块6</a>
+			</div>
+			<div class="bd">
+				<div id="panel1" class="panel">
+					<h2>区块1</h2>
+					<div><p>区块1内容</p><p>区块1内容</p><p>区块1内容</p></div>
+				</div>
+				<div id="panel2" class="panel">
+					<h2>区块2</h2>
+					<div><p>区块2内容</p><p>区块2内容</p><p>区块2内容</p></div>
+				</div>
+				<div id="panel3" class="panel">
+					<h2>区块3</h2>
+					<div><p>区块3内容</p><p>区块3内容</p><p>区块3内容</p></div>
+				</div>
+				<div id="panel4" class="panel">
+					<h2>区块4</h2>
+					<div><p>区块4内容</p><p>区块4内容</p><p>区块4内容</p></div>
+				</div>
+				<div id="panel5" class="panel">
+					<h2>区块5</h2>
+					<div><p>区块5内容</p><p>区块5内容</p><p>区块5内容</p></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

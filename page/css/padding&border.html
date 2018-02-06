@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>内边距和边框</title>
+	<style>
+		body{ margin: 0;padding:0;}
+		.outer{top:0;left:0;width:500px;background:red;}
+		.inner{width:100px;height:100px;margin: 10%;padding:10%;background:yellow;}
+		.m1{padding:20px;border-top:1px solid red;border-right:2px dotted yellow;border-bottom:3px dashed blue;border-left:4px double green;}
+		.m2{padding: 40px;overflow:visible;}
+		.m3{padding: 80px;}
+		.wrap{overflow: hidden;}
+		.wrap div{float:left;width:200px;height:100px;margin:10px;border:2px solid red;}
+		.b1{border-radius: 10px;}
+		.b2{border-radius: 10px 20px;}
+		.b3{border-radius: 10px 20px 30px;}
+		.b4{border-radius: 10px 20px 30px 40px;}
+
+		.w2 div{width:100px;height:100px;}
+		.b11{border-radius: 10px/20px;}
+		.b22{border-radius: 10px 20px/20px;}
+		.b33{border-radius: 10px 20px 30px/20px;}
+		.b44{border-radius: 10px 20px 30px 40px/20px;}
+
+		.b111{border-radius: 10%;}
+		.b222{border-radius: 20%}
+		.b333{border-radius: 30%;}
+		.b444{1border-radius: 50%;}
+
+		.s1{box-shadow: 1px 1px rgba(0,0,0,.6);}
+		.s2{box-shadow: 1px 1px 3px 1px rgba(0,0,0,.6);}
+		.s3{box-shadow: 1px 1px 3px 1px rgba(0,0,0,.6) inset;}
+		.s4{box-shadow: 1px 1px 3px 1px rgba(0,0,0,.6),3px 3px 5px 1px rgba(0,0,0,.6),5px 5px 10px 1px rgba(0,0,0,.6),10px 10px 15px 0px rgba(0,0,0,.6);}
+	</style> 
+</head>
+<body>
+	<div class='outer'>
+		<div class='inner'></div>
+		<div class='inner'></div>
+	</div>
+	<div class='m1'>11111</div>
+	<div class='m2'>
+		<div class='m3'>3333</div>
+	</div>
+
+	<div class='wrap'>
+		<div class='b1'></div>
+		<div class='b2'></div>
+		<div class='b3'></div>
+		<div class='b4'></div>
+	</div>
+	<div class='wrap w2'>
+		<div class='b1'></div>
+		<div class='b2'></div>
+		<div class='b3'></div>
+		<div class='b4'></div>
+	</div>
+	<div class='wrap w2'>
+		<div class='b11'></div>
+		<div class='b22'></div>
+		<div class='b33'></div>
+		<div class='b44'></div>
+	</div>
+	<div class='wrap w2 '>
+		<div class='b111 s1'></div>
+		<div class='b222 s2'></div>
+		<div class='b333 s3'></div>
+		<div class='b444 s4'></div>
+	</div>
+</body>
+</html>

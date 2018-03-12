@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>dom练习-实现下拉级联,全选不选和反选,获取元素位置</title>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,p{margin:0;}
+			ul,ol,li{margin:0;padding:0;list-style: none;}
+			img{border:0;}
+			a{text-decoration:none;}
+
+			input {margin-right:20px;}
+
+			.event1{
+				width:300px;
+				height:600px;
+				background:red;
+			}
+			.event2{
+				width:300px;
+				height:100px;
+				background:orange;
+			}
+			.event3{
+				width:300px;
+				height:50px;
+				background:blue;
+			}
+			.parent {
+				margin:20px;
+				border:10px solid red;
+				overflow: hidden;
+			}
+			.son {
+				position: relative;
+				border-top:20px solid blue;
+				border-left:20px solid blue;
+				margin:20px;
+				padding:20px;
+				width:100px;
+				height:500px;
+			}
+			.grandchild {
+				position: absolute;
+				border-top:30px solid orange;
+				border-left:30px solid orange;
+				margin:30px;
+				padding:30px;
+				width:100px;
+				height:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='select'>
+			<select id='shi'>
+				<option value='-1'>请选择市</option>
+				<option value='1'>北京</option>
+				<option value='2'>湖北</option>
+				<option value='3'>南京</option>
+			</select>
+			<select id='qu'>
+				<option value='-1'>请选择区</option>
+			</select>
+		</div>
+		<div class='checkbox'>
+			<div>
+				<label for='choiceAll'>全选</label>
+				<input id='choiceAll' type='radio' name='op' value='1' />
+				<label for='choiceNone'>全不选</label>
+				<input id='choiceNone' type='radio' name='op' value='0' />
+				<label for='choiceRe'>反选</label>
+				<input id='choiceRe' type='radio' name='op' value='2' />
+			</div>
+			<div id='checkboxlist'>
+				<label for='cb1'>苹果</label>
+				<input id='cb1' type='checkbox' name='fruit' value='apple' />
+				<label for='cb2'>桔子</label>
+				<input id='cb2' type='checkbox' name='fruit' value='orange' />
+				<label for='cb3'>香蕉</label>
+				<input id='cb3' type='checkbox' name='fruit' value='banana' />
+				<label for='cb4'>草莓</label>
+				<input id='cb4' type='checkbox' name='fruit' value='strawberry' />
+				<label for='cb5'>梨子</label>
+				<input id='cb5' type='checkbox' name='fruit' value='pear' />
+			</div>
+			<p>结果：<span id='result'></span></p>
+		</div>
+		<div id='ev1' class='event1'>
+			<div  id='ev2' class='event2'>
+				<p  id='ev3' class='event3'></p>
+			</div>
+		</div>
+		<div class='parent'>
+			<div class='son'>
+				<div class='grandchild'></div>
+			</div>
+		</div>
+		<script>
+			//下拉菜单级联
+			var addr = [
+				{ 
+					name: '北京', value: '1', child: [
+					{ name: '朝阳', value:'11', child:null},
+					{ name: '海淀', value:'12', child:null},
+					{ name: '东城', value:'13', child:null},
+					{ name: '西城', value:'14', child:null}
+				]},
+				{
+					name: '武汉', value: '2', child: [
+					{ name: '汉阳', value:'21', child:null},
+					{ name: '洪山', value:'22', child:null}
+				]},
+				{	
+					name:'南京',value: '3', child: null
+				}
+			];
+			var shi = document.getElementById('shi'),
+				qu = document.getElementById('qu');
+			function getChild(value){
+				var arr = null;
+				addr.forEach(function(item,index,array){
+					if(item.value == shi.value){
+						arr = item.child;
+					}
+				});	
+				return arr;
+			}
+			shi.onchange = function(){
+				var child = getChild(this.value);
+				qu.options.length = 1;
+				if(child){
+					child.forEach(function(item){
+						//qu.insertAdjacentHTML('beforeend','<option value="'+item.value+'">'+item.name+'</option>');
+
+						//select元素有add和remove方法
+						qu.add(new Option(item.name,item.value));
+					});
+				}
+			};
+
+			//全选、不选、反选
+			var All = document.getElementById('choiceAll'),
+				None = document.getElementById('choiceNone'),
+				Re = document.getElementById('choiceRe');
+			var checkboxlist = document.getElementById('checkboxlist'),
+				result = document.getElementById('result');
+			var cList = getclist();
+			function getclist(){
+				var clist= [], clistA = checkboxlist.childNodes;
+				var len = clistA.length
+				for(var i=0;i<len;i++){
+					if(clistA[i].nodeName.toLowerCase() == 'input' && clistA[i].type == 'checkbox'){
+						clist[clist.length] = clistA[i];
+					}
+				}
+				return clist;
+			}
+			checkboxlist.onclick = function(e){
+				//var e = e || window.event;
+				//var target = e.target || e.srcElement;
+				//if(target.nodeName.toLowerCase() == 'input' && target.type == 'checkbox'){
+					showResult();					
+				//}
+			}
+			All.onclick = function(){
+				cList.forEach(function(item){
+					item.checked = true;
+				});
+				showResult();
+			};
+			None.onclick = function(){
+				cList.forEach(function(item){
+					item.checked = false;
+				});
+				showResult();
+			};
+			Re.onclick = function(){
+				cList.forEach(function(item){
+					item.checked = item.checked?false:true;
+				});
+				showResult();
+			};
+			function showResult(){
+				var re=[];
+				cList.forEach(function(item){
+					if(item.checked == true){
+						re[re.length] = item.value;
+					}
+				});
+				result.innerHTML = re.join();
+			}
+
+			//事件捕获和冒泡
+			document.getElementById('ev1').onclick = function(){
+				console.log('event1');
+			};
+			document.getElementById('ev2').onclick = function(){
+				console.log('event2');
+			};
+			document.getElementById('ev3').onclick = function(e){
+				console.log('event3');
+				e.stopPropagation();
+				//stopPropagation stopPropagation
+			};
+
+
+			var parent = document.getElementsByClassName('parent')[0];
+			var son = document.getElementsByClassName('son')[0];
+			var grandchild = document.getElementsByClassName('grandchild')[0];
+
+
+			console.log('parent clientHeight ' + parent.clientHeight);
+			console.log('parent scrollHeight ' + parent.scrollHeight);
+			console.log('parent scrollTop ' + parent.scrollTop);
+			console.log('parent scrollLeft ' + parent.scrollLeft);
+			console.log('parent offsetHeight ' + parent.offsetHeight);
+			console.log('parent offsetTop ' + parent.offsetTop);
+			console.log('parent offsetLeft ' + parent.offsetLeft);
+			console.log(parent.offsetParent);
+
+
+			console.log('son clientHeight ' + son.clientHeight);
+			console.log('son scrollHeight ' + son.scrollHeight);
+			console.log('son scrollTop ' + son.scrollTop);
+			console.log('son scrollLeft ' + son.scrollLeft);
+			console.log('son offsetHeight ' + son.offsetHeight);
+			console.log('son offsetTop ' + son.offsetTop);
+			console.log('son offsetLeft ' + son.offsetLeft);
+			console.log(son.offsetParent);
+			
+			
+			console.log('grandchild clientHeight ' + grandchild.clientHeight);
+			console.log('grandchild scrollHeight ' + grandchild.scrollHeight);
+			console.log('grandchild scrollTop ' + grandchild.scrollTop);
+			console.log('grandchild scrollLeft ' + grandchild.scrollLeft);
+			console.log('grandchild offsetHeight ' + grandchild.offsetHeight);
+			console.log('grandchild offsetTop ' + grandchild.offsetTop);
+			console.log('grandchild offsetLeft ' + grandchild.offsetLeft);
+			console.log(grandchild.offsetParent);
+
+			function getTop(node){
+				var top = 0;
+				do{
+					top += node.offsetTop+node.offsetParent.clientTop;
+					node = node.offsetParent;
+				}while(node.nodeName.toLowerCase() != 'body')
+				return top;
+			}
+			function getLeft(node){
+				var left = 0;
+				do{
+					left += node.offsetLeft+node.offsetParent.clientLeft;
+					node = node.offsetParent;
+				}while(node.nodeName.toLowerCase() != 'body')
+				return left;
+			}
+			
+				
+		</script>
+	</body>
+</html>

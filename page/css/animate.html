@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>animation</title>
+		<style>
+			body{ margin: 0;}
+			.wrap{
+				width: 100%;
+			}
+			.wrap a{
+				position: relative;
+				float:left;
+				box-sizing:border-box;
+				width:150px;
+				height:150px;
+				background-color:#ccc;
+				margin: 10px;
+				counter-increment: demo;
+				color:#fff;
+				font-size:60px;
+				line-height: 150px;
+				text-align: center;
+				text-decoration: none;
+			}
+			.wrap a:before{
+				content:counter(demo);
+			}
+			.bg-color:hover{
+				animation: bg-color 1s infinite alternate;
+			}
+			@keyframes bg-color{
+				0%{
+					background-color: #ccc;
+				}
+				100%{
+					background-color: #f00;
+				}
+			}
+
+			.bg-linear{
+				background-image:linear-gradient(135deg,transparent 0%,transparent 25%,#f00 25%, #f00 50%,transparent 50%, transparent 75%,#f00 75%, #f00 100%);
+				background-size: 50px 50px;
+				background-repeat: repeat;
+			}
+			.bg-linear:hover{
+				animation:bg-linear 1s infinite alternate;
+			}
+			@keyframes bg-linear{
+				0%{
+					background-position: 0 0;
+				}
+				
+				100%{
+					background-position:100% 100%;
+				}
+			}
+			.bg-position{
+				background-image:linear-gradient(135deg, #f00 25%,transparent 25%),linear-gradient(135deg, transparent 75%,#f00 75%),linear-gradient(45deg, #f00 25%,transparent 25%),linear-gradient(45deg, transparent 75%,#f00 75%);
+				background-size: 32px 300px;
+				background-position:0px 0px,16px -151px,16px -151px,0px 0px;
+				
+			}
+			.bg-position:hover{
+				animation:bg-position 1s infinite alternate;
+			}
+			@keyframes bg-position{
+				0%{
+					background-position:0px 0px,16px -151px,16px -151px,0px 0px;
+				}
+				100%{
+					background-position:0px -70px,16px -80px,16px -80px,0px -70px;
+				}
+			}
+			.bra:hover{
+				animation:bra 1s infinite alternate;
+			}
+			@keyframes bra{
+				0{
+					border-radius: 0;
+				}
+				100% {
+					border-radius: 50%;
+				}
+			}
+			.bra2{
+				border-top-right-radius:150px 150px;
+				border-bottom-left-radius:150px 150px;
+				border-top-left-radius:0;
+				border-bottom-right-radius:0;
+			}
+			.bra2:hover{
+				animation:bra2 1s infinite alternate;
+			}
+			@keyframes bra2{
+				0{
+					border-top-right-radius:150px 150px;
+					border-bottom-left-radius:150px 150px;
+					border-top-left-radius:0;
+					border-bottom-right-radius:0;
+				}
+				100% {
+					border-top-right-radius:0;
+					border-bottom-left-radius:0;
+					border-top-left-radius:150px 150px;
+					border-bottom-right-radius:150px 150px;
+				}
+			}
+			.bw{
+				border:solid red;
+				border-width:0px;
+			}
+			.bw:hover{
+				animation:bw 1s infinite alternate;
+			}
+			@keyframes bw{
+				0%{
+					border-width:0px;
+				}
+				100%{
+					border-width:73px;
+				}
+			}
+			.bw2{
+				border:dashed red;
+				border-width:0px;
+			}
+			.bw2:hover{
+				animation:bw2 1s infinite alternate;
+			}
+			@keyframes bw2{
+				0%{
+					border-width:0px;
+				}
+				100%{
+					border-width:40px;
+				}
+			}
+			.bw3{
+				border-style:double;
+				border-color:#f00;
+				border-width:0px;
+			}
+			.bw3:hover{
+				animation:bw3 1s infinite alternate;
+			}
+			@keyframes bw3{
+				0%{
+					border-width:0px;
+				}
+				100%{
+					border-width:70px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class='wrap'>
+			<a class='bg-color' href="#"></a>
+			<a class='bg-linear' href="#"></a>
+			<a class='bg-position' href="#"></a>
+			<a class='bra' href="#"></a>
+			<a class='bra2' href="#"></a>
+			<a class='bw' href="#"></a>
+			<a class='bw2' href="#"></a>
+			<a class='bw3' href="#"></a>
+		</div>
+	</body>
+</html>

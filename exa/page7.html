@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>字数统计</title>
+		<style type="text/css">
+			textarea{
+				width: 300px;
+				height:100px;
+			}
+			div{
+				width:100px;
+				height:700px;
+			}
+		</style>
+	</head>
+	<body>
+		<a id='firstlink' href='###'>链接</a>
+		<textarea></textarea>
+		<p></p>
+		<div></div>
+		<script>
+			var textarea = document.getElementsByTagName('textarea')[0];
+			var p = document.getElementsByTagName('p')[0];
+			textarea.onkeyup = function(){
+				if( 140 < this.value.length){
+					this.value = this.value.substring(0, 140);
+				}
+				p.innerHTML = '当前已输入'+this.value.length+'个字符';
+			};
+			function showSite(e){
+				// console.log(e.type);
+				// console.log(e.clientX + '   '+e.clientY);
+				// console.log(e.pageX + '   '+e.pageY);
+				// console.log(e.screenX + '   '+e.screenY);
+				// console.log(e.x + '   '+e.y);
+				// console.log('');
+			}
+			document.body.onmousemove = showSite;
+		</script>
+	</body>
+</html>

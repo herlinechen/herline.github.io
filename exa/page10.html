@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<titl>列表排序</title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<button onclick=''>排序</button>
+		<ul id='list'>
+			<li>Adgsglj</li>
+			<li>Tdgjsg</li>
+			<li>Mdkhgsg</li>
+			<li>Rdgjsg</li>
+			<li>Bdgsg</li>
+			<li>Osdghg</li>
+		</ul>
+		<script>
+			function sortLi(){
+				var list = document.getElementById('list'),
+					items = list.getElementsByTagName('li'),
+					len = items.length;
+				var arr = [];
+				for(var i=0;i<len;i++){
+					arr[i] = items[i].innerHTML;
+				}
+				arr.sort();
+				list.innerHTML = '';
+				for(var i=0;i<len;i++){
+					list.insertAdjacentHTML('beforeend','<li>'+arr[i]+'</li>');
+				}
+			}
+			
+			//算法思路 共有len轮比较，每轮里有len-i次比较，每次比较取出大的那个值放到对应位置上
+			/*var list = document.getElementById('list'),
+				items = list.getElementsByTagName('li'),
+				len = items.length;
+			var arr = [],newArr=[];
+			for(var i=0;i<len;i++){
+				arr[i] = items[i].innerHTML;
+			}
+			var max = arr[0];
+			function getIndex(arr){
+				max = arr[0];
+				arr.forEach(function(item,index,a){
+					if(item >= max){
+						max = item;
+						maxIndex = index;
+					}
+				});
+			}
+			for(var i=0;i<len;i++){
+				getIndex(arr);
+				newArr[newArr.length] = max;
+				arr = arr.filter(function(item){
+					return item != max;
+				});
+			}*/
+
+			var list = document.getElementById('list');
+			var i, switching,shouldSwitch;
+			switching = true;
+			while(switching){
+				b = list.getElementsByTagName('li');
+				for(i=0;i<b.length-1;i++){
+					shouldSwitch = false;
+					//console.log(b[i].innerHTML + '      '+b[i+1].innerHTML);
+					if(b[i].innerHTML.toLowerCase() > b[i+1].innerHTML.toLowerCase()){
+						shouldSwitch = true;
+						break;
+					}
+				}
+				if(shouldSwitch){
+					//替换b[i]与b[i+1]的顺序
+					b[i].parentNode.insertBefore(b[i+1],b[i]);
+					switching = true;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

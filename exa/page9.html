@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>图片弹窗、遮照</title>
+		<style type="text/css">
+			body,p{margin:0;}
+			ul,li{margin:0;padding:0;list-style: none;}
+			a{text-decoration: none;}
+			
+			#list {
+
+			}
+			#win{
+				display: none;
+				position: fixed;
+				top:0;
+				left:0;
+				z-index: 2;
+				width:100%;
+				height:100%;
+				background:rgba(0,0,0,0.2);
+			}
+			#win .wincontent{
+				position: relative;
+				width:500px;
+				height:300px;
+				border:2px solid #000;
+				margin:5% auto;
+				background:#000;
+			}
+			#win .close{
+				position: absolute;
+				right:0;
+				top:0;
+				width:20px;
+				height:20px;
+				background:red;
+				color:#fff;
+				text-align: center;
+			}
+			.lightBox{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			.lightItem{
+				width:400px;
+				margin:0 auto;
+			}
+			.lightItem li{
+				display:none;
+				text-align: center;
+			}
+			.lightItem li:first-child{
+				display:block;
+			}
+			.prev, .next{
+				position: absolute;
+				top:50%;
+				width:20px;
+				height:40px;
+				margin-top:-20px;
+				background:pink;
+				text-indent: -999px;
+			}
+			.prev{
+				left: 10px;
+			}
+			.next{
+				right:10px;
+			}
+			.lightNav{
+				width:400px;
+				margin:10px auto;
+			}
+			.lightNav li{
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='list'>
+			<img width='100px' src="image/demo1.jpg">
+			<img width='100px' src="image/demo2.jpg">
+			<img width='100px' src="image/demo3.jpg">
+			<img width='100px' src="image/demo4.jpg">
+		</div>
+		<div id='win'>
+			<div class='wincontent'>
+				<a class='close' href='javascript:void(0)'>X</a>
+				<div class='lightBox'>
+					<ul class='lightItem'>
+						<li><img width='400px' src="image/demo1.jpg"></li>
+						<li><img width='400px' src="image/demo2.jpg"></li>
+						<li><img width='400px' src="image/demo3.jpg"></li>
+						<li><img width='400px' src="image/demo4.jpg"></li>
+					</ul>
+					<a href='javascript:void(0)' class='prev'>上一张</a>
+					<a href='javascript:void(0)' class='next'>下一张</a>
+					<ul class='lightNav'>
+						<li><img width='100px' src="image/demo1.jpg"></li>
+						<li><img width='100px' src="image/demo2.jpg"></li>
+						<li><img width='100px' src="image/demo3.jpg"></li>
+						<li><img width='100px' src="image/demo4.jpg"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			var win = document.getElementById('win'),
+				list = document.getElementById('list'),
+				lightItem = document.querySelector('.lightItem'),
+				lightNav = document.querySelector('.lightNav'),
+				items = lightItem.getElementsByTagName('li'),
+				len = items.length,
+				nowIndex = 0;
+			list.addEventListener('click',function(e){
+				var e = e||window.event;
+				var target = e.target || e.srcElement;
+				if(target.nodeName.toLowerCase() == 'img'){
+					nowIndex = getIndex(list,'img',target);
+					openWin(nowIndex);
+				}
+			});
+			function getIndex(parent,child,target){
+				var img = parent.getElementsByTagName(child);
+				for(var i=0;i<img.length;i++){
+					if(img[i] == target){
+						return i;
+					}
+				}
+			}
+			function openWin(index){				
+				win.style.display = 'block';
+				initLightBox(index);
+			}
+			function closeWin(){
+				win.style.display = 'none';
+			}
+			
+			function nav(obj){
+				for(var i=0;i<len;i++){
+					if(items[i] == obj){
+						items[i].style.display = 'block';
+						nowIndex = i;
+					} else {
+						items[i].style.display = 'none';
+					}
+				}
+			}
+			function initLightBox(index){
+				console.log(index+'/'+len);
+				var targetItem = items[index];
+				nav(targetItem);
+			}
+			function prev(){
+				var targetIndex,tragetItem;
+				if(nowIndex == 0){
+					targetIndex = len - 1;
+				}else{
+					targetIndex = nowIndex - 1;
+				}
+				targetItem = items[targetIndex];
+				nav(targetItem);
+
+			}
+			function next(){
+				var targetIndex,tragetItem;
+				if(nowIndex == (len-1)){
+					targetIndex = 0;
+				}else{
+					targetIndex = nowIndex + 1;
+				}
+				targetItem = items[targetIndex];
+				nav(targetItem);
+
+			}
+			document.querySelector('.close').onclick = closeWin;
+			document.querySelector('.prev').onclick = prev;
+			document.querySelector('.next').onclick = next;
+			lightNav.onclick = function(e){
+				var e = e||window.event;
+				var target = e.target || e.srcElement;
+				if(target.parentNode.nodeName.toLowerCase() == 'li'){
+					nowIndex = getIndex(lightNav, 'li', target.parentNode);
+					var targetItem = items[nowIndex];
+					nav(targetItem);
+				}
+			}
+		</script>
+	</body>
+</html>

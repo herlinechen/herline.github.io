@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+    <title>DIV元素 - herlinechen.github.io</title>
+    <meta charset='utf-8' />
+    <style>
+    	body{ margin:0;}
+    	.normal{
+    		float:left;
+    		width:50%;
+    	}
+    	.reset{
+    		float:right;
+    		width:50%;
+    	}
+    	.reset p,.reset dl, .reset dd{
+    		margin:0;
+    	}  
+    	.reset a{color:#333;text-decoration: none;}
+    	.reset h1,.reset h2,.reset h3,.reset h4,.reset h5,.reset h6{
+    		margin:0;
+    		font-size:16px;
+    		font-weight: normal;
+    	}
+    	.reset ul,.reset ol{
+    		margin:0;
+    		padding:0;
+    		list-style:none;
+    	}
+    	.reset table{
+    		border-collapse:collapse;
+    		border-spacing:0;
+    	}
+    	.reset input{
+    		padding:0;
+    		border-width: 1px;
+    		border-color:#ddd;
+    		border-style:solid;
+    	}
+    	.reset button{
+    		padding:0;
+    		border-width: 1px;
+    		border-color:#ddd;
+    		border-style:solid;
+    	}
+    	.reset input[type='radio'], .reset input[type='checkbox']{
+    		margin:0;
+    	}
+    	.reset input[type='file']{
+    		border:none;
+    	}
+    	.reset textarea{
+    		padding:0;  		
+    		border-color:#ddd;  		
+    	}
+    	.reset select{
+    		border-color:#ddd;
+    	}
+
+    	.header{
+    		position: relative;
+    		width:1200px;
+    		height:100px;
+    		margin:0 auto;
+    		border-bottom:1px solid #ddd;
+    	}
+    	.header h1{
+    		margin:0;
+    		line-height: 100px;
+    		text-align: center;
+    	}
+    	.header a{
+    		position:absolute;
+    		top:40px;
+    		line-height: 30px;
+    		color:red;
+    		text-decoration: none;
+    	}
+    	.main{
+    		width:1200px;
+    		margin:0 auto;
+    	}
+    	.main .result{
+    		padding:10px 0;
+    		margin:10px 0;
+    		border-bottom:1px solid #ddd;
+    	}
+    </style>
+</head>
+<body>
+	<div class='header'>
+		<a href='../index.html'>返回首页</a>
+		<h1>element元素</h1>
+	</div>
+	<div class='main'>
+		<div class='result'>
+			<div><b>block:</b> div p h1 h2 h3 h4 h5 h6 ul ol dl dt dd form</div>
+			<div><b>inline:</b> span a label em strong i b</div>
+			<div><b>inline-block:</b> img input(text password radio checkbox file) textarea select button</div>
+			<div><b>none:</b> input(hidden)</div>
+			<div><b>list-item:</b> li</div>
+			<div><b>table:</b> table; caption thead tbody tfoot tr th tr都是table下子类display形式</div>
+		</div>
+		<div class='normal'>
+			<div>布局div元素</div>
+			<p>段落段<a href='###'>段落段落</a>段落段段落段落段落段段落段落段落段段落段落</p>
+			<h1>这是一级标题</h1>
+			<h2>这是二级标题</h2>
+			<h3>这是三级标题</h3>
+			<h4>这是四级标题</h4>
+			<h5>这是五级标题</h5>
+			<h6>这是六级标题</h6>
+			<ul>
+				<li>这是无序列表</li>
+				<li>这是无序列表</li>
+				<li>这是无序列表</li>
+			</ul>
+			<ol>
+				<li>这是有序列表</li>
+				<li>这是有序列表</li>
+				<li>这是有序列表</li>
+			</ol>
+			<dl>
+				<dt>这是自定义列表标题</dt>
+				<dd>这是自定义列表项</dd>
+				<dd>这是自定义列表项</dd>
+				<dt>这是自定义列表标题</dt>
+				<dd>这是自定义列表项</dd>
+				<dd>这是自定义列表项</dd>
+			</dl>
+			<img width='300px' src='../resource/images/demo1.jpg' />
+			<table>
+				<caption>这是表格标题</caption>
+				<thead>
+					<tr>
+						<th>表头</th>
+						<th>表头</th>
+						<th>表头</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>表格项</td>
+						<td>表格项</td>
+						<td>表格项</td>
+					</tr>
+					<tr>
+						<td>表格项</td>
+						<td>表格项</td>
+						<td>表格项</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>表格尾</td>
+						<td>表格尾</td>
+						<td>表格尾</td>
+					</tr>
+				</tfoot>
+			</table>
+			<form>
+				<input type='hidden' value='' />
+				<input type='text' value='' />
+				<input type='password' value='' />
+				<label>单项选择</label>
+				<input type='radio' value='' />
+				<label>多项选择</label>
+				<input type='checkbox' value='' />
+				<input type='submit' value='submit' />
+				<input type='button' value='按钮钮' />
+				<button>按钮钮</button>
+				<input type='file' value='' />
+				<textarea></textarea>
+				<select>
+					<option>下拉选项</option>
+					<option>下拉选项</option>
+					<option>下拉选项</option>
+				</select>
+			</form>
+		</div>
+		<div class='reset'>
+			<div>布局div元素</div>
+			<p>段落段<a href='###'>段落段落</a>段落段段落段落段落段段落段落段落段段落段落</p>
+			<h1>这是一级标题</h1>
+			<h2>这是二级标题</h2>
+			<h3>这是三级标题</h3>
+			<h4>这是四级标题</h4>
+			<h5>这是五级标题</h5>
+			<h6>这是六级标题</h6>
+			<ul>
+				<li>这是无序列表</li>
+				<li>这是无序列表</li>
+				<li>这是无序列表</li>
+			</ul>
+			<ol>
+				<li>这是有序列表</li>
+				<li>这是有序列表</li>
+				<li>这是有序列表</li>
+			</ol>
+			<dl>
+				<dt>这是自定义列表标题</dt>
+				<dd>这是自定义列表项</dd>
+				<dd>这是自定义列表项</dd>
+				<dt>这是自定义列表标题</dt>
+				<dd>这是自定义列表项</dd>
+				<dd>这是自定义列表项</dd>
+			</dl>
+			<img width='300px' src='../resource/images/demo1.jpg' />
+			<table>
+				<caption>这是表格标题</caption>
+				<thead>
+					<tr>
+						<th>表头</th>
+						<th>表头</th>
+						<th>表头</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>表格项</td>
+						<td>表格项</td>
+						<td>表格项</td>
+					</tr>
+					<tr>
+						<td>表格项</td>
+						<td>表格项</td>
+						<td>表格项</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>表格尾</td>
+						<td>表格尾</td>
+						<td>表格尾</td>
+					</tr>
+				</tfoot>
+			</table>
+			<form>
+				<input type='hidden' value='' />
+				<input type='text' value='' autocomplete='off' />
+				<input type='password' value='' autocomplete='off' />
+				<label>单项选择</label>
+				<input type='radio' value='' />
+				<label>多项选择</label>
+				<input type='checkbox' value='' />
+				<input type='submit' value='submit' />
+				<input type='button' value='按钮钮' />
+				<button>按钮钮</button>
+				<input type='file' value='' />
+				<textarea></textarea>
+				<select>
+					<option>下拉选项</option>
+					<option>下拉选项</option>
+					<option>下拉选项</option>
+				</select>
+			</form>
+		</div>
+	</div>	
+</body>
+</html>

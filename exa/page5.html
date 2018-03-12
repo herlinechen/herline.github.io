@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>dom元素</title>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,p{margin:0;}
+			ul,ol,li{margin:0;padding:0;list-style: none;}
+			img{border:0;}
+			a{text-decoration:none;}
+
+			
+			.wrap{
+				width:500px;
+				height:200px;
+				overflow:hidden;
+				border:1px solid blue;
+			}
+			.wrap ul{
+				width: 600px;
+				height:300px;
+				border:10px solid red;
+				margin:10px;
+				padding:10px;
+				overflow: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='wrap'>
+			<ul id='ulist'>
+				<li>这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项</li>
+				<li class='a'>这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项</li>
+				<li class='a b' id='kgd' title='ddg'>这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项</li>
+				<li>这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项这是列表项</li>
+			</ul>
+		</div>
+		<div>
+			<dl>
+				<dt>html元素-属性</dt>
+				<dd>节点本身： nodeType, nodeName, nodeValue</dd>
+				<dd>节点属性： id, className, title, style, attributes, classlist</dd>
+				<dd>节点关系： parentNode, childNodes, firstChild, lastChild, nextSibling, previouSibling, ownerDocument</dd>
+				<dd>节点大小:  clientWidth, clientHeight, offsetWidth, offsetHeight, offsetLeft, offsetTop, offsetParent, scrollWidth, scrollHeight, scrollTop, scrollLeft</dd>
+				<dd>节点内容： innerHTML , innerText</dd>
+				<dt>html元素-方法</dt>
+				<dd>节点获取： getElementsByTagName(), getElementsByClassName(), querySelector('class'), querySelectorAll('class'), hasChildNodes(), hasFocus(),</dd>
+				<dd>节点属性： getAttribute(), setAttribute(), removeAttribute(), hasAttribute(), hasAttributes()</dd>
+				<dd>节点操作： appendChild(), insertBefore(), cloneNode(), replaceChild(), removeChild(), insertAdjacentHTML(), insertAdjacentElement(),insertAdjacentText(), /beforebegin, afterbegin, beforeend, afterend/ </dd>
+				<dd>节点事件： addEventListener(), removeEventListener()</dd>
+				<dt>document</dt>
+				<dd>document.getElementById(), document.createElement(), docuemnt.createDocumentFragment()</dd>
+			</dl>
+		</div>
+		<script>
+			document.write('这是通过document.write方法添加的文档内容');
+			var ulist = document.getElementById('ulist');
+			var li = document.getElementsByTagName('li');
+			//作为属性property  用 className
+			//作为Attribute 用class,用getAttribute()方法来获取 
+			var li2Attr = li[2].attributes
+			//可以给property赋任何类型的值，而用getAttribute()获取的是特性Attribute，特性Attribute中只能存贮字符串。两者数据结构不一致。
+
+		</script>
+	</body>
+</html>

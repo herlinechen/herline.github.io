@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>幻灯片2 -- 滑动切换</title>
+		<style>
+			body{margin:0;}
+			ul,li{margin:0;padding:0;list-style: none;}
+
+			#slider{
+				position:relative;
+				width:500px;
+				height:400px;
+				margin:0 auto;
+				overflow:hidden;
+			}
+			#slider .prev, #slider .next{
+				width: 20px;
+				height: 40px;
+				margin-top:-220px;
+				background:pink;
+				text-indent: -999px;
+			}
+			#slider .prev{
+				float:left;
+				margin-left:10px;
+			}
+			#slider .next{
+				float:right;
+				margin-right:10px;
+			}
+			#slider .list{
+				position:absolute;
+				top:0;
+				left:20px;
+				width:2000px;
+				height:400px;
+				overflow:hidden;
+			}
+			#slider .list li{
+				float:left;
+				width:500px;
+				height:400px;
+			}
+			#slider .list li.item1{
+				background:red;
+			}
+			#slider .list li.item2{
+				background:green;
+			}
+			#slider .list li.item3{
+				background:blue;
+			}
+			#slider .list li.item4{
+				background:orange;
+			}
+			#slider .nav{
+				position:absolute;
+				bottom:10px;
+				left: 50%;
+				width:112px;
+				height:28px;
+				margin-left:-56px;
+				overflow: hidden;
+			}
+			#slider .nav li{
+				float:left;
+				width:20px;
+				height:20px;
+				border-radius: 50%;
+				background:#dcdcdc;
+				margin:4px;
+			}
+		</style>
+	</head>
+	<body>		
+		<div id='slider'>
+			<ul class='list'>
+				<li class='item1'>0</li>
+				<li class='item2'>1</li>
+				<li class='item3'>2</li>
+				<li class='item4'>3</li>
+			</ul>
+			<a class='prev' href='#' onclick='prev()'>上一张</a>
+			<a class='next' href='#' onclick='next()'>下一张</a>
+			<ul class='nav'>
+				<li data-index='0'></li>
+				<li data-index='1'></li>
+				<li data-index='2'></li>
+				<li data-index='3'></li>
+			</ul>
+		</div>
+		<script>
+		window.onload = function(){
+		
+				var slider = document.getElementById('slider'),
+					list = slider.getElementsByClassName('list')[0],
+					items = list.getElementsByTagName('li'),
+					nav = slider.getElementsByClassName('nav')[0],
+					navItem = nav.getElementsByTagName('li');
+				var i = 0, t, mt;
+
+				var left = 0;
+				function Move(){
+					if(left == -1500){
+						left = 0;
+					}
+					left--;
+					list.style.left = left+ 'px';
+					mt = setTimeout(function(){ Move();}, 10);
+				}
+				Move();
+
+				function Auto(){
+					i += 1;
+					if(i == 4){
+						i = 0;
+					}
+					Slider();
+					console.log(i);
+					t = setTimeout(function(){ Auto(); }, 1000);
+				}
+
+				function Slider(){
+					// for(var n = 0;n < items.length;n++){
+					// 	if(n == i){
+					// 		items[n].style.display = 'block';
+					// 	}else{
+					// 		items[n].style.display = 'none';
+					// 	}
+					// }
+				}
+				function start(){
+					t = setTimeout(function(){ Auto(); }, 1000);
+				}
+				function stop(){
+					clearTimeout(t);
+				}
+
+				function prev(){
+					stop();
+					if(i == 0){
+						i = 3;
+					}else{
+						i -= 1;
+					}				
+					Slider();
+					start();
+				}
+				function next(){
+					stop();
+					if(i == 3){
+						i = 0;
+					}else{
+						i += 1;
+					}
+					Slider();
+					start();
+				}
+				//setTimeout(function(){start();}, 1000);
+				
+				// nav.onclick = function(e){
+				// 	var e = e || window.event;
+				// 	var target = e.target || e.srcElement;
+				// 	if(target.nodeName.toLowerCase() == 'li'){
+				// 		i = parseInt(target.getAttribute('data-index'));
+				// 	}
+				// 	stop();
+				// 	Slider();
+				// 	start();
+				// };
+		}
+		</script>
+	</body>
+</html>

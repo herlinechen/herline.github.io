@@ -2,11 +2,13 @@
 <html>
 	<head>
 		<meta charset='utf-8' />
-		<title>animation</title>
+		<title>animate</title>
+		<link rel='stylesheet' type='text/css' href='../../resource/css/reset.css' />
+		<link rel='stylesheet' type='text/css' href='../../resource/css/item.css' />
 		<style>
-			body{ margin: 0;}
 			.wrap{
 				width: 100%;
+				overflow: hidden;
 			}
 			.wrap a{
 				position: relative;
@@ -15,7 +17,7 @@
 				width:150px;
 				height:150px;
 				background-color:#ccc;
-				margin: 10px;
+				margin: 20px;
 				counter-increment: demo;
 				color:#fff;
 				font-size:60px;
@@ -155,15 +157,33 @@
 		</style>
 	</head>
 	<body>
-		<div class='wrap'>
-			<a class='bg-color' href="#"></a>
-			<a class='bg-linear' href="#"></a>
-			<a class='bg-position' href="#"></a>
-			<a class='bra' href="#"></a>
-			<a class='bra2' href="#"></a>
-			<a class='bw' href="#"></a>
-			<a class='bw2' href="#"></a>
-			<a class='bw3' href="#"></a>
-		</div>
+		<div class='header'>
+	        <a href='../../index.html'>返回首页</a>
+	        <h1>CSS - animate</h1>
+	    </div>
+	    <div class='main'>
+	    	<div class='subnav'>
+	    		<a href="css.html">返回CSS</a>
+	    		<a class='active' href="animate.html">animate</a>
+	    		<a href="animation.html">animation</a>
+	    		<a href="appearance.html">appearance</a>
+	    		<a href='balloon.html'>唯美气球</a>
+	    		<a href='btndot.html'>等待按钮...</a>
+	    		<a href='content.html'>content属性</a>
+	    		<a href='littleboll.html'>滚动的小球</a>
+	    		<a href='perspective.html'>perspective</a>
+	    		<a href='transform.html'>transform</a>
+	    	</div>
+	    	<div class='wrap'>
+				<a class='bg-color' href="#"></a>
+				<a class='bg-linear' href="#"></a>
+				<a class='bg-position' href="#"></a>
+				<a class='bra' href="#"></a>
+				<a class='bra2' href="#"></a>
+				<a class='bw' href="#"></a>
+				<a class='bw2' href="#"></a>
+				<a class='bw3' href="#"></a>
+			</div>
+	    </div>	
 	</body>
 </html>

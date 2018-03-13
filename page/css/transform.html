@@ -3,17 +3,17 @@
 <head>
 	<meta charset='utf-8' />
 	<title>transform属性</title>
+	<link rel='stylesheet' type='text/css' href='../../resource/css/reset.css' />
+	<link rel='stylesheet' type='text/css' href='../../resource/css/item.css' />
 	<style>
-		html{
-			height:100%;
+		.wrap{
+			height:800px;
 			perspective: 1000px;
 		}
-		body{
+		.content{
 			display:flex;
 			width: 100%;
 			height:100%;
-			margin:0;
-
 		}
 		.cube{
 			position:relative;
@@ -67,13 +67,35 @@
 	</style>
 </head>
 <body>
-	<div class='cube'>
-		<div class='d1'>1</div>
-		<div class='d2'>2</div>
-		<div class='d3'>3</div>
-		<div class='d4'>4</div>
-		<div class='d5'>5</div>
-		<div class='d6'>6</div>
-	</div>
+	<div class='header'>
+        <a href='../../index.html'>返回首页</a>
+        <h1>CSS - transform</h1>
+    </div>
+    <div class='main'>
+    	<div class='subnav'>
+    		<a href="css.html">返回CSS</a>
+	    	<a href="animate.html">animate</a>
+	    	<a href="animation.html">animation</a>
+	    	<a href="appearance.html">appearance</a>
+	    	<a href='balloon.html'>唯美气球</a>
+	    	<a href='btndot.html'>等待按钮...</a>
+	    	<a href='content.html'>content属性</a>
+	    	<a href='littleboll.html'>滚动的小球</a>
+	    	<a href='perspective.html'>perspective</a>
+	    	<a class='active' href='transform.html'>transform</a>
+    	</div>
+    	<div class='wrap'>
+			<div class='content'>
+				<div class='cube'>
+					<div class='d1'>1</div>
+					<div class='d2'>2</div>
+					<div class='d3'>3</div>
+					<div class='d4'>4</div>
+					<div class='d5'>5</div>
+					<div class='d6'>6</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>

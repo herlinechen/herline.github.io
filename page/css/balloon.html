@@ -3,17 +3,13 @@
 <head>
 	<title>css3 唯美气球</title>
 	<meta charset='utf-8' />
+	<link rel='stylesheet' type='text/css' href='../../resource/css/reset.css' />
+	<link rel='stylesheet' type='text/css' href='../../resource/css/item.css' />
 	<style>
-		html{
-			height: 100%;
+		.content{
+			position: relative;
+			height:850px;
 		}
-		body{
-			margin:0;width:100%;height:100%;
-			background-color:#ccc;
-			font-size:16px;
-		}
-		p, ul{margin:0;padding:0;}
-		li{list-style:none;}
 		.note{
 			width: 900px;
 			margin:0 auto;
@@ -36,10 +32,11 @@
 			overflow: hidden;
 		}
 		.balloon{
+			position:absolute;
 			width:160px;height:160px;
 			background:#fff;
 			border-radius: 160px 160px 64px 160px;
-			transform:rotateZ(45deg) translate(400px,400px);
+			transform: rotateZ(45deg) translate(400px,400px);
 			box-shadow: -8px -8px 80px -8px #873940 inset;
 			animation: animate 1s ease-out infinite;
 			animation-play-state: running;
@@ -48,25 +45,30 @@
 			animation-play-state: paused;
 		}
 		.b1{
-			margin:20px 10px;
 			animation-delay:0.2s;
 		}
-		.b2{ margin:0;
+		.b2{
+			left:160px;
 			animation-delay:0.3s;
 		}
-		.b3{ margin: 90px 30px;
+		.b3{ 
+			left: 320px;
 			animation-delay:0.6s;
 		}
-		.b4{ margin: 45px 30px;
+		.b4{ 
+			left: 480px;
 			animation-delay:0.4s;
 		}
-		.b5{ margin:0;
+		.b5{ 
+			left: 640px;
 			animation-delay:0.9s;
 		}
-		.b6{ margin:70px 10px;
+		.b6{ 
+			left: 800px;
 			animation-delay:1s;
 		}
-		.b7{ margin:0;
+		.b7{
+			left: 960px;
 			animation-delay:0.2s;
 		}
 
@@ -97,31 +99,51 @@
 	</style>
 </head>
 <body>
-	<div class='note'>
-		<p>效果涉及到的css样式属性：</p>
-		<ul>
-			<li>flex</li>
-			<li>border-radius</li>
-			<li>box-shadow</li>
-			<li>::after</li>
-			<li>perspective</li>
-			<li>transform: translate</li>
-			<li>transform: rotate</li>
-			<li>@keyframes</li>
-			<li>animation</li>
-			<li>animation-play-state</li>
-		</ul>
-	</div>
-	<div class='balloonwrap'>
-		<div class='balloon b1'></div>
-		<div class='balloon b2'></div>
-		<div class='balloon b3'></div>
-		<div class='balloon b4'></div>
-		<div class='balloon b5'></div>
-		<div class='balloon b6'></div>
-		<div class='balloon b7'></div>
-	</div>
-	
-	
+	<div class='header'>
+        <a href='../../index.html'>返回首页</a>
+        <h1>CSS - 唯美气球</h1>
+    </div>
+    <div class='main'>
+    	<div class='subnav'>
+    		<a href="css.html">返回CSS</a>
+	    	<a href="animate.html">animate</a>
+	    	<a href="animation.html">animation</a>
+	    	<a href="appearance.html">appearance</a>
+	    	<a class='active' href='balloon.html'>唯美气球</a>
+	    	<a href='btndot.html'>等待按钮...</a>
+	    	<a href='content.html'>content属性</a>
+	    	<a href='littleboll.html'>滚动的小球</a>
+	    	<a href='perspective.html'>perspective</a>
+	    	<a href='transform.html'>transform</a>
+    	</div>
+    	<div class='wrap'>
+			<div class='content'>
+				<div class='note'>
+					<p>效果涉及到的css样式属性：</p>
+					<ul>
+						<li>flex</li>
+						<li>border-radius</li>
+						<li>box-shadow</li>
+						<li>::after</li>
+						<li>perspective</li>
+						<li>transform: translate</li>
+						<li>transform: rotate</li>
+						<li>@keyframes</li>
+						<li>animation</li>
+						<li>animation-play-state</li>
+					</ul>
+				</div>
+				<div class='balloonwrap'>
+					<div class='balloon b1'></div>
+					<div class='balloon b2'></div>
+					<div class='balloon b3'></div>
+					<div class='balloon b4'></div>
+					<div class='balloon b5'></div>
+					<div class='balloon b6'></div>
+					<div class='balloon b7'></div>
+				</div>
+			</div>
+		</div>
+    </div>
 </body>
 </html>

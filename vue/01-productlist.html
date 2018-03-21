@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>vue - productlist</title>
+	<style type="text/css">
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id='app'>
+		<ul>
+			<li v-for='product in productList'>
+				<input type='number' v-model.number='product.num' />
+				{{product.num}} {{product.name}}
+				<span v-if='product.num === 0'>out of sale</span>
+				<button @click='add(product)'>add</button>
+			</li>
+		</ul>
+		<p>Total Inventory: {{total}}</p>
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				productList : []
+			},
+			computed: {
+				total () {
+					return this.productList.reduce((sum, product) => {
+						return sum + product.num;
+					}, 0);
+				}
+			},
+			methods: {
+				add (item) {
+					item.num += 1;
+				}
+			},
+			created () {
+				var arr = [
+					{id: 0, name: 'sdgsg',num: 2},
+					{id: 1, name: 'fhdhd',num: 5},
+					{id: 2, name: 'ryrye',num: 23},
+					{id: 3, name: 'cbbfdh',num: 4},
+					{id: 4, name: 'jhhhhg',num: 1}
+				];
+				this.productList = arr;
+			}
+		});
+	</script>
+</body>
+</html>

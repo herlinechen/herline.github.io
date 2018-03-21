@@ -5,6 +5,6 @@ img{border:0;}
 a{color:#333;text-decoration: none;}
 table{border-collapse:collapse;border-spacing:0;}
 input,button{padding:0;border-width:1px;border-color:#ddd;border-style:solid;}
-input[type='radio'], .reset input[type='checkbox']{margin:0;}
+input[type='radio'], input[type='checkbox']{margin:0;}
 textarea{padding:0;border-color:#ddd;}
 input[type='file']{border:none;}

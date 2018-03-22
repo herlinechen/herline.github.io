@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>html5 layout and media</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+	<style type="text/css">
+		body{margin:0;}
+		ul,li{margin:0;padding:0;}
+		#container {
+			font-family: Arial;
+			width:300px;
+			margin: 0 10px;
+			background:#dcdcdc;
+		}
+
+		#main li{
+			list-style: none;
+			height:40px;
+			margin-bottom:0.5em;
+			line-height:40px;
+			background:#29d9c2;
+			border-radius: 15px;
+		}
+		#main li a{
+			color:white;
+			text-decoration: none;
+			margin-left:1em;
+		}
+		@media screen and (max-width:480px){
+			#container {
+				width:auto;
+				font-family: Arial;
+				margin: 0 10px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id='container'>
+		<header>
+			<h1>Title here</h1>
+		</header>
+		<nav id='main'>
+			<ul>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">Contact Us</a></li>
+				<li><a href="#">Location</a></li>
+				<li><a href="#">Product</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+		</nav>
+		<footer>
+			Footer links here
+		</footer>
+	</div>
+	<p id='clientW'></p>
+	<p id='contW'></p>
+	<script>
+	var d = document.body.clientWidth;
+	document.getElementById('clientW').innerHTML = d;
+	var container = document.getElementById('container');
+	document.getElementById('contW').innerHTML = container.clientWidth;
+
+	</script>
+</body>
+</html>

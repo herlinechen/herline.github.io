@@ -1,0 +1,61 @@
+/*homework 22-1 style */
+/* outside layout */
+.main{
+	width:600px;
+	margin:0 auto;
+	background:#454545;
+	color:#fff;
+}
+/* formpanel style */
+.form h1{
+	padding-top:10px;
+	font-size:26px;
+	line-height:52px;
+	text-align: center;
+}
+.form fieldset{
+	margin:20px;
+	padding-top:20px;
+}
+.form table{
+	width:100%;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+.form th, .form td{
+	padding-bottom:22px;
+}
+.form th{
+	padding-left:10px;
+	padding-right:10px;
+	text-align: left;
+	font-weight: normal;
+}
+.form label.cb, .form label.rd{
+	margin-right:20px;
+}
+.form input[type='text'] {
+	width:150px;
+	height:24px;
+	padding: 0 10px;
+	background-color:#fff;
+	border: 1px solid #ddd;
+}
+.form select{
+	width:170px;
+	padding:3px 0;
+}
+.form input.sw{
+	width:40px;
+}
+.form input.mw{
+   width:110px;
+}
+.form input.lw{
+	width:400px;
+}
+.form .formbottom{
+	text-align: center;
+	padding-bottom: 20px;
+
+}

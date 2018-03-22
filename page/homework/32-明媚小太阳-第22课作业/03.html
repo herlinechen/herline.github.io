@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>第二十二课作业3</title>
+	<link rel='stylesheet' href='css/reset.css' />
+	<link rel='stylesheet' href='css/03.css' />
+</head>
+<body>
+	<!--外层布局结构-->
+	<div class='main'>
+
+		<!--表单-->
+		<div class='form'>
+			<form>
+				<h1>增加快递信息</h1>
+				<fieldset>
+					<legend>发货单</legend>
+					<table>
+						<tr>
+							<th><label for='fname'>发货人:</label></th>
+							<td><input id='fname' type='text' value='' /></td>
+							<th><label for='faddr'>地址:</label></th>
+							<td><input id='faddr' type='text' value='' /></td>
+						</tr>
+						<tr>
+							<th><label for='ftele'>电话:</label></th>
+							<td><input id='ftele' type='text' value='' /></td>
+							<th><label for='fzcode'>邮编:</label></th>
+							<td><input id='fzcode' type='text' value='' /></td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>收货单</legend>
+					<table>
+						<tr>
+							<th><label for='sname'>收货人:</label></th>
+							<td><input id='sname' type='text' value='' /></td>
+							<th><label for='saddr'>地址:</label></th>
+							<td><input id='saddr' type='text' value='' /></td>
+						</tr>
+						<tr>
+							<th><label for='stele'>电话:</label></th>
+							<td><input id='stele' type='text' value='' /></td>
+							<th><label for='szcode'>邮编:</label></th>
+							<td><input id='szcode' type='text' value='' /></td>
+						</tr>
+						<tr>
+							<th><label for='sregion'>地区:</label></th>
+							<td colspan='3'>
+								<select id='sregion'>
+									<option>北京</option>
+									<option>上海</option>
+									<option>广州</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th><label>包装:</label></th>
+							<td colspan='3'>
+								<input id='cb1' type='checkbox' name='package' value='' />
+								<label class='cb' for='cb1'>纸箱</label>
+								<input id='cb2' type='checkbox' value='' name='package' />
+								<label class='cb' ffor='cb2'>木箱</label>
+								<input id='cb3' type='checkbox' value='' name='package' />
+								<label class='cb' ffor='cb3'>快递袋</label>
+								<input id='cb4' type='checkbox' value='' name='package' />
+								<label class='cb' ffor='cb4'>其他</label>
+							</td>
+						</tr>
+						<tr>
+							<th><label>付款方式:</label></th>
+							<td colspan='3'>
+								<input id='rd1' type='radio' value='' name='paytype' />
+								<label class='rd' for='rd1'>现金</label>
+								<input id='rd2' type='radio' value='' name='paytype' />
+								<label class='rd' for='rd2'>支付宝</label>
+								<input id='rd3' type='radio' value='' name='paytype' />
+								<label class='rd' for='rd3'>网银</label>
+								<input id='rd4' type='radio' value='' name='paytype' />
+								<label class='rd' for='rd4'>ATM</label>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>货物信息</legend>
+					<table>
+						<tr>
+							<th><label for='gname'>货物名称:</label></th>
+							<td colspan='5'><input id='gname' class='lw' type='text' value='' /></td>
+						</tr>
+						<tr>
+							
+							<th><label for='gquantity'>数量:</label></th>
+							<td><input id='gquantity' class='sw' type='text' value='' /></td>
+							<th><label for='gweight'>重量:</label></th>
+							<td><input id='gweight' class='sw' type='text' value='' /></td>
+							<th><label for='gtime'>发货时间</label></th>
+							<td><input id='gtime' class='mw' type='text' value='' /></td>
+						</tr>
+					</table>
+				</fieldset>
+				<div class='formbottom'>
+					<button>确定</button>
+					<button>取消</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>vue - slider</title>
+	<style type="text/css">
+		body{margin:0;}
+		ul{margin:0;padding:0;list-style:none;}
+		#slider {
+			position: relative;
+			width: 300px;
+			height:400px;
+			margin:0 auto;
+		}
+		#slider .s-prev, #slider .s-next{
+			position:absolute;
+			top:64px;
+			width: 20px;
+			height:40px;
+			background:pink;
+			text-indent: -9999px;
+			cursor: pointer;
+		}
+		#slider .s-prev{
+			left:10px;
+		}
+		#slider .s-next{
+			right: 10px;
+		}
+		#slider .s-list{
+			width: 100%;
+			height: 169px;
+			overflow: hidden;
+		}
+		#slider .s-list li{
+			display:none;
+		}
+		#slider .s-list li.active{
+			display:block;
+		}
+		#slider .s-nav{
+			display:flex;
+			margin-top:10px;
+		}
+		#slider .s-nav li{
+			width: 20px;
+			height:20px;
+			margin:auto;
+			border:1px solid red;
+			border-radius: 50%;
+			text-align: center;
+			cursor: pointer;
+		}
+		#slider .s-nav li.active{
+			background:red;
+			color:#fff;
+		}
+		#slider .s-nav li:first-child{
+			margin-right:5px;
+		}
+		#slider .s-nav li:last-child{
+			margin-left:5px;
+		}
+		#slider .s-nav li:nth-child(2),#slider .s-nav li:nth-child(3){
+			margin:auto 5px;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id='app'>
+		<div id='slider'>
+			<span class='s-prev' @click='prev'>上一页</span>
+			<span class='s-next' @click='next'>下一页</span>
+			<ul class='s-list'>
+				<li v-for='(img,index) in imglist' :class='index == nowindex?"active":""' @mousemove='stop' @mouseout='start'><img width='300px' :src='img' /></li>
+			</ul>
+			<ul class='s-nav'>
+				<li v-for='(img,index) in imglist' :class='index == nowindex?"active":""' @click='slide(index)'>
+					{{index+1}}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		var slider = new Vue({
+			el: '#slider',
+			data: {
+				nowindex: 2,
+				t:null,
+				imglist: [
+					'../resource/images/demo1.jpg',
+					'../resource/images/demo2.jpg',
+					'../resource/images/demo3.jpg',
+					'../resource/images/demo4.jpg'
+				]
+			},
+			methods: {
+				prev () {
+					clearInterval(this.t);
+					if(this.nowindex == 0){
+						this.nowindex = 3;
+					}else {
+						this.nowindex --;
+					}
+					this.t = setInterval(this.auto, 1000);
+				},
+				next () {
+					clearInterval(this.t);
+					if(this.nowindex == 3){
+						this.nowindex = 0;
+					}else {
+						this.nowindex ++;
+					}
+					this.t = setInterval(this.auto, 1000);
+				},
+				slide (i){
+					clearInterval(this.t);
+					this.nowindex = i;
+					this.t = setInterval(this.auto, 1000);
+				},
+				auto () {
+					console.log(this.nowindex);
+					if(this.nowindex == 3){
+						this.nowindex = 0;
+					}else {
+						this.nowindex ++;
+					}
+					
+				},
+				stop () {
+					clearInterval(this.t);
+				},
+				start () {
+					this.t = setInterval(this.auto, 1000);
+				}
+			},
+			created (){
+				this.start();
+			}
+		});
+	</script>
+</body>
+</html>

@@ -3,8 +3,10 @@
 <head>
     <title>DIV元素 - herlinechen.github.io</title>
     <meta charset='utf-8' />
+    <link rel='stylesheet' type='text/css' href='../../resource/css/item.css' />
     <style>
     	body{ margin:0;}
+    	a{text-decoration: none;}
     	.normal{
     		float:left;
     		width:50%;
@@ -57,45 +59,30 @@
     		border-color:#ddd;
     	}
 
-    	.header{
-    		position: relative;
-    		width:1200px;
-    		height:100px;
-    		margin:0 auto;
-    		border-bottom:1px solid #ddd;
-    	}
-    	.header h1{
-    		margin:0;
-    		line-height: 100px;
-    		text-align: center;
-    	}
-    	.header a{
-    		position:absolute;
-    		top:40px;
-    		line-height: 30px;
-    		color:#333;
-    		text-decoration: none;
-    	}
-    	.header a:hover{
-    		color:red;
-    	}
-    	.main{
-    		width:1200px;
-    		margin:0 auto;
-    	}
+    	
     	.main .result{
     		padding:10px 0;
     		margin:10px 0;
     		border-bottom:1px solid #ddd;
     	}
+
+
+    	.normal p a{color:red;width:300px;height:60px;padding:10px;margin:10px;border:1px solid blue;line-height:60px;}
+    	.normal p span{display: inline-block;color:red;width:300px;height:60px;padding:10px;margin:10px;border:1px solid blue;line-height:60px;}
     </style>
 </head>
 <body>
 	<div class='header'>
-		<a href='../index.html'>返回首页</a>
-		<h1>element元素</h1>
+		<a href='../../index.html'>返回首页</a>
+		<h1>DIV - element元素</h1>
 	</div>
 	<div class='main'>
+		<div class='subnav'>
+            <a href="divlist.html">返回DIV</a>
+            <a class='active' href='element.html'>element</a>
+            <a href='vertical.html'>vertical</a>
+            <a href='box-sizing.html'>box-sizing</a>
+        </div>
 		<div class='result'>
 			<div><b>block:</b> div p h1 h2 h3 h4 h5 h6 ul ol dl dt dd form</div>
 			<div><b>inline:</b> span a label em strong i b</div>
@@ -103,10 +90,15 @@
 			<div><b>none:</b> input(hidden)</div>
 			<div><b>list-item:</b> li</div>
 			<div><b>table:</b> table; caption thead tbody tfoot tr th tr都是table下子类display形式</div>
+			<br />
+			<div><b>input:</b>默认display:inline-block;box-sizing:<b>content-box;</b>border-width:<b>2px</b>;border-style:<b>inset</b>;padding:<b>1px 0</b>;</div>
+			<div><b>textarea:</b>默认display:inline-block;box-sizing:<b>content-box</b>;border-width:<b>1px</b>;border-style:<b>solid</b>;padding:<b>2px</b>;</div>
+			<div><b>select:</b>默认display:inline-block;box-sizing:<b>border-box</b>;border-width:<b>1px</b>;border-style:<b>solid</b>;</div>
+			<div><b>button:</b>默认display:inline-block;box-sizing:<b>border-box</b>;border-width:<b>2px</b>;border-style:<b>outset</b>;padding:<b>1px 6px</b></div>
 		</div>
 		<div class='normal'>
 			<div>布局div元素</div>
-			<p>段落段<a href='###'>段落段落</a>段落段段落段落段落段段落段落段落段段落段落</p>
+			<p>段落段<a href='###'>段落段落</a>段落段段落段<span>落段落段段</span>落段落段落段段落段落</p>
 			<h1>这是一级标题</h1>
 			<h2>这是二级标题</h2>
 			<h3>这是三级标题</h3>
@@ -131,7 +123,7 @@
 				<dd>这是自定义列表项</dd>
 				<dd>这是自定义列表项</dd>
 			</dl>
-			<img width='300px' src='../resource/images/demo1.jpg' />
+			<img width='300px' src='../../resource/images/demo1.jpg' />
 			<table>
 				<caption>这是表格标题</caption>
 				<thead>
@@ -208,7 +200,7 @@
 				<dd>这是自定义列表项</dd>
 				<dd>这是自定义列表项</dd>
 			</dl>
-			<img width='300px' src='../resource/images/demo1.jpg' />
+			<img width='300px' src='../../resource/images/demo1.jpg' />
 			<table>
 				<caption>这是表格标题</caption>
 				<thead>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5 拖放</title>
+		<style>
+			span{font-size:20px;line-height:40px;}
+			div{width: 100%;height:100px;border: 1px solid red;margin-bottom:20px;}
+
+			.wrap{
+				width:804px;
+				height:802px;
+				margin:0 auto;
+			}
+			.left{
+				float:left;
+				width:200px;
+				height:800px;
+				border:1px solid red;
+			}
+			.right{
+				float:left;
+				width:600px;
+				height:800px;
+				border:1px solid red;
+			}
+			.right ul{
+				margin:0;padding:0;
+				list-style: none;
+			}
+			.right li{
+				width:200px;
+				padding:0 10px;
+				border-radius: 9px;
+				background:pink;
+				margin:5px;
+				color:#333;
+				line-height:30px;
+				cursor:move;
+			}
+		</style>
+	</head>
+	<body>
+		源对象：
+
+		dragstart：源对象开始拖放。
+		drag：源对象拖放过程中。
+		dragend：源对象拖放结束。
+		过程对象：
+
+		dragenter：源对象开始进入过程对象范围内。
+		dragover：源对象在过程对象范围内移动。
+		dragleave：源对象离开过程对象的范围。
+		目标对象：
+
+		drop：源对象被拖放到目标对象内。
+		<div class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<span id="drag1" draggable="true" ondragstart="drag(event)">被移动的文字</span>
+		</div>
+		<div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<div class='wrap'>
+			<div id='dustbin' class='left'>
+			</div>
+			<div class='right'>
+				<ul id='draglist'>
+					<li draggable="true" >111111111111</li>
+					<li draggable="true" >222222222222</li>
+					<li draggable="true" >3333333333333</li>
+					<li draggable="true" >4444444444</li>
+					<li draggable="true" >555555555555555</li>
+					<li draggable="true" >6666666</li>
+					<li draggable="true" >777777</li>
+				</ul>
+			</div>
+		</div>		
+		<script>
+			function allowDrop(ev){
+				ev.preventDefault();
+			}
+			function drag(ev){
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+			function drop(ev){
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			var draglist = document.getElementById('draglist'),
+				dragitem = draglist.getElementsByTagName('li');
+			var evTarget = null;
+			draglist.ondrag = function(e){
+				evTarget = e.target;
+			};
+			var dustbin = document.getElementById('dustbin');
+			dustbin.ondragenter = function(e){
+				e.preventDefault();
+				return true;
+			}
+			dustbin.ondragover = function(e){
+				e.preventDefault();
+				return true;
+			}
+			dustbin.ondrop = function(e){
+				e.preventDefault();
+				evTarget.parentNode.removeChild(evTarget);
+				return false;
+			}
+
+			
+		</script>
+	</body>
+</html>

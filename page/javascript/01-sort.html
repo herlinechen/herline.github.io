@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>快速排序</title>
+</head>
+<body>
+	<div class='main'>
+		<div class='sort1'>
+			<p>快速排序</p>
+			<button>排序</button>
+		</div>
+	</div>
+	<script>
+		var a = [10,3,6,2,1,77,43,3,9,35];
+		function sortFn(arr){
+			if(arr.length <= 1){
+				return arr;
+			}
+			var base = arr[0];
+			var a1 = [], a2 = [], a3=[];
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]<base){
+					a1.push(arr[i]);
+				}else if(arr[i] == base){
+					a2.push(arr[i]);
+				}else{
+					a3.push(arr[i]);
+				}
+			}
+			return sortFn(a1).concat(a2,sortFn(a3));
+		}
+		var b = sortFn(a);
+		console.log(b);
+	</script>
+</body>
+</html>

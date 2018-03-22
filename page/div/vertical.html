@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+    <title>herlinechen.github.io</title>
+    <meta charset='utf-8' />
+    <link rel='stylesheet' type='text/css' href='../../resource/css/reset.css' />
+    <style>
+        .header {
+            width:1200px;
+            height:100px;
+            margin:0 auto;
+            overflow: hidden;
+            border-bottom:1px solid #ddd;
+        }
+        .header h1{
+            float:left;
+            width:225px;
+            line-height:100px;
+        }
+        .nav{
+            float:left;
+            width:800px;
+            height:100%;
+        }
+        .nav ul {
+            width:100%;
+            padding-top:40px;
+            overflow: hidden;
+        }
+        .nav ul li{
+            display:inline-block;
+            margin:0 10px;
+            padding:0 10px;
+            line-height:30px;
+        }
+        .nav ul li.active a, .nav ul li a:hover{
+            color:red;
+        }
+        .main{
+            display:flex;
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+        }
+        .flex{
+            background:red;
+            width:30px;
+            height:30px;
+            margin:auto;
+        }
+
+        .main2{
+            position:relative;
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+        }
+        .absolute2{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            width: 30px;
+            height:30px;
+            margin:auto;
+            background: blue;
+        }
+
+        .main3{
+            position:relative;
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+        }
+        .absolute3{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height:30px;
+            margin:-15px 0 0 -15px;
+            background: orange;
+        }
+
+        .main4{
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+            text-align: center;
+            line-height:300px;
+            border:1px solid red;
+        }
+        .inlineblock{
+            display:inline-block;
+            width:30px;
+            height:30px;
+            background:pink;
+            vertical-align: middle;
+        }
+        .main5{
+            position:relative;
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+        }
+        .translate{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width:30px;
+            height:30px;
+            transform:translate(-15px, -15px);
+            background:green;
+        }
+        .main6{
+            position:relative;
+            width:1200px;
+            height: 300px;
+            margin:0 auto;
+            display: table;
+
+        }
+        .tablecell{
+            width:30px;
+            height:30px;
+            display:table-cell;
+            background:pink;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class='header'>
+        <h1>Herline Chen</h1>
+        <div class='nav'>
+            <ul>
+                <li class='active'><a href='index.html'>HOME</a></li>
+                <li><a href='page/element.html'>DIV</a></li>
+                <li><a href='page/css/csslist.html'>CSS</a></li>
+                <li><a href='page/js/'>JavaScript</a></li>
+                <li><a href='page/effect/'>html5</a></li>
+                <li><a href='page/homework/'>JQuery</a></li>
+                <li><a href='page/text/'>text</a></li>
+                <li><a href='page/other/'>other</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class='main'>
+        <div class='flex'></div>
+    </div>
+    <div class='main2'>
+        <div class='absolute2'></div>
+    </div>
+    <div class='main3'>
+        <div class='absolute3'></div>
+    </div>
+    <div class='main4'>
+        <div class='inlineblock'></div>
+    </div>
+    <div class='main5'>
+        <div class='translate'></div>
+    </div>
+    <div class='main6'>
+        <div class='tablecell'>tablecelltablecell</div>
+    </div>
+</body>
+</html>

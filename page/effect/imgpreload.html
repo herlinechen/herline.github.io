@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>herlinechen.github.io</title>
+    <meta charset='utf-8' />
+    <link rel='stylesheet' type='text/css' href='../../resource/css/reset.css' />
+    <style>
+    	.a{
+    		width:300px;
+    		height:170px;
+    	}
+    	.a a{
+    		display:block;
+    		width:100%;
+    		height:100%;
+    		background:url(../../resource/images/demo2.jpg) no-repeat;
+    		background-size:contain;
+    	}
+    	.a a:hover{
+    		background-image: url(../../resource/images/demo3.jpg);
+    	}
+    	.b{
+    		background-image: url(../../resource/images/demo4.jpg);
+    	}
+    </style>
+</head>
+<body>
+	<div>
+		<img width='300px' src='../../resource/images/demo1.jpg' />
+	</div>
+	<div class='a'>
+		<a href='###'>
+		</a>
+	</div>
+	<div id='target'>
+		<div id='child'>
+			<div id='grandChild'>
+				<a href=''></a>
+			</div>
+		</div>
+	</div>
+	<script>
+		var imgArr = ['../../resource/images/demo1.jpg','../../resource/images/demo2.jpg','../../resource/images/demo3.jpg'];
+		for(var i=0;i<imgArr.length;i++){
+			var img = new Image();
+			img.src = imgArr[i];
+
+			console.log(img.complete);
+		}
+		document.getElementById('target').className = 'b';
+	</script>
+</body>
+</html>

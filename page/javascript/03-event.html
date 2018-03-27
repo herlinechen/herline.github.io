@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>dom 事件顺序</title>
+	<style>
+		body, p{margin:0;}
+		.main{width:800px;margin:0 auto;padding:30px;border:1px solid blue;}
+		.item{padding:10px;margin:10px;border:1px solid red;}
+		.item p{}
+	</style>
+</head>
+<body>
+	<div class='main'>
+		<div id='window' class='item'>
+			<p>window事件</p>
+		</div>
+		<div id='keyboard' class='item'>
+			<p>Keyboard事件:<input type='text' value='' /></p>
+		</div>
+		<div id='mouse' class='item'>
+			<p>Mouse事件</p>
+			<p>mousedown:鼠标按下</p>
+			<p>mouseup:鼠标放开</p>
+			<p>mouseover:鼠标移动进入到元素——<b>进</b>（不推荐使用）</p>
+			<p>mousemove:鼠标在元素上移动——<b>移</b></p>
+			<p>mouseout:鼠标移出元素——<b>出</b>（不推荐使用）</p>
+			<p>mouseenter:针对某一元素的鼠标移入事件（推荐使用）</p>
+			<p>mouseleave:针对某一元素的鼠标移出事件（推荐使用）</p>
+		</div>
+
+		<div id='inputs' class='item'>
+			<p>text,password,textarea顺序：focus,click,keydown,keypress,keyup,change,blur</p>
+			<p>radio,checkbox顺序：focus, click, change, blur——<b>checked</b></p>
+			<p>select顺序：focus, click, change, blur——<b>selected</b></p>
+			<p>submit,reset顺序：focus, click,blur</p>
+			<p>select:选中输入的内容时触发的事件</p>
+			<p>
+				<label>文本框</label>
+				<input type='text' name='text' value='' />
+			</p>
+			<p>
+				<label>密码框</label>
+				<input type='password' name='password' value='' />
+			</p>
+			<p>
+				<label>单选框</label>
+				<input type='radio' name='radio' value='1' />
+				<input type='radio' name='radio' value='2' />
+				<input type='radio' name='radio' value='3' />
+				<input type='radio' name='radio' value='4' />
+			</p>
+			<p>
+				<label>多选框</label>
+				<input type='checkbox' name='checkbox' value='11' />
+				<input type='checkbox' name='checkbox' value='22' />
+				<input type='checkbox' name='checkbox' value='33' />
+				<input type='checkbox' name='checkbox' value='44' />
+			</p>
+			<p>
+				<label>下拉框</label>
+				<select name='select'>
+					<option value='111'>111</option>
+					<option value='222'>222</option>
+					<option value='333'>333</option>
+					<option value='444'>444</option>
+				</select>
+			</p>
+			<p><label>文本域</label><textarea name='textarea'></textarea></p>
+			<p>
+				<input type='button' name='submit' value='submit' />
+				<input type='button' name='reset' value='reset' />
+			</p>
+		</div>
+		
+	</div>
+	<script>
+		//window event: onload, onresize,
+		window.addEventListener('load',function(){
+			console.log('load');
+		});
+		window.addEventListener('resize',function(){
+			console.log('resize');
+		});
+
+		//keyboard event: onkeydown, onkeypress, onkeyup
+		var keyEvent = ['keydown','keyup','keypress','focus','blur'];
+		var keyboard = document.getElementById('keyboard'),
+			input = keyboard.getElementsByTagName('input')[0];
+		
+		for(var i=0;i<keyEvent.length;i++){
+			input.addEventListener(keyEvent[i],function(e){
+				console.log(e.type);
+			});
+		}
+	
+		//mouse事件：mousedown,mouseup,mouseenter,mouseleave,mousemove,mouseover,mouseout
+		var mouseEvent = ['mousedown','mouseup','mouseenter','mouseleave','mousemove','mouseover','mouseout'];
+		var mouse = document.getElementById('mouse');
+		for(var i=0;i<mouseEvent.length;i++){
+			mouse.addEventListener(mouseEvent[i],function(e){
+				console.log(e.type);
+			});
+		}
+
+		//input 事件:focus, blur, change,select,submit,reset
+		var inputs = document.getElementById('inputs');
+		var inputEvent = ['click','focus','blur','change','select','submit','reset','keydown','keyup','keypress'];
+
+		//文本框 
+		var text = document.getElementsByName('text')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			text.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target);
+				console.log(e);
+			});
+		}
+
+		//密码框
+		var pwd = document.getElementsByName('password')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			pwd.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target);
+			});
+		}
+
+		//单选框
+		var radio = document.getElementsByName('radio');
+		for(var j=0;j<radio.length;j++){
+			for(var i=0;i<inputEvent.length;i++){
+				radio[j].addEventListener(inputEvent[i],function(e){
+					console.log(e.type);
+					console.log(e);
+				});
+			}
+		}
+
+		//多选框
+		var checkbox = document.getElementsByName('checkbox');
+		for(var j=0;j<checkbox.length;j++){
+			for(var i=0;i<inputEvent.length;i++){
+				checkbox[j].addEventListener(inputEvent[i],function(e){
+					console.log(e.type);
+					console.log(e);
+				});
+			}
+		}
+
+		//下拉框
+		var select = document.getElementsByName('select')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			select.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target.value);
+				console.log(e);
+			});
+		}
+		
+		//文本域
+		var textarea = document.getElementsByName('textarea')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			textarea.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target.value);
+			});
+		}
+
+		//submit按钮
+		var submit = document.getElementsByName('submit')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			submit.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target);
+			});
+		}
+
+		//reset按钮
+		var reset = document.getElementsByName('reset')[0];
+		for(var i=0;i<inputEvent.length;i++){
+			reset.addEventListener(inputEvent[i],function(e){
+				console.log(e.type);
+				console.log(e.target);
+			});
+		}
+
+	
+	</script>	
+</body>
+</html>

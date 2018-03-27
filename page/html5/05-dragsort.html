@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5 拖动排序</title>
+		<style>
+			.main{
+				width:804px;
+				height:802px;
+				margin:0 auto;
+			}
+			.main ul{
+				margin:0;padding:0;
+				list-style: none;
+			}
+			.main li{
+				width:200px;
+				padding:0 10px;
+				border-radius: 9px;
+				background:pink;
+				margin:5px;
+				color:#333;
+				line-height:30px;
+				cursor:move;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='main'>
+			<p>在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发</p>
+			<ul id='draglist'>
+				<li draggable="true" >111111111111</li>
+				<li draggable="true" >222222222222</li>
+				<li draggable="true" >3333333333333</li>
+				<li draggable="true" >4444444444</li>
+				<li draggable="true" >555555555555555</li>
+				<li draggable="true" >6666666</li>
+				<li draggable="true" >777777</li>
+			</ul>	
+		</div>
+		<script>
+			
+			var draglist = document.getElementById('draglist'),
+				dragitem = draglist.getElementsByTagName('li');
+			var source = null,lock = true;
+
+			for(var i=0;i<dragitem.length;i++){
+				dragitem[i].ondragstart = function(e){
+					//源对象
+					source = this;
+					this.style.backgroundColor = 'red';
+					e.dataTransfer.effectAllowd = 'move';
+				}
+				
+				dragitem[i].ondragend = function(e){
+					e.preventDefault();
+					this.style.backgroundColor = 'pink';
+				}
+				dragitem[i].ondragenter = function(e){
+					//目标对象
+					this.parentNode.insertBefore(source, this);
+				}
+				dragitem[i].ondragleave = function(e){
+					if(source != this){
+						if(lock && (this == this.parentNode.lastElementChild || this == this.parentNode.lastChild)){
+							this.parentNode.appendChild(source);
+							lock = false;
+						}else {
+							lock = true;
+						}
+					}
+					
+				}
+			}
+			document.ondragover = function(e){
+				e.preventDefault();
+			}
+			document.ondrop = function(e){
+				e.preventDefault();
+			}
+		</script>
+	</body>
+</html>

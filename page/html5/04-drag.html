@@ -41,19 +41,19 @@
 		</style>
 	</head>
 	<body>
-		源对象：
-
-		dragstart：源对象开始拖放。
-		drag：源对象拖放过程中。
-		dragend：源对象拖放结束。
-		过程对象：
-
-		dragenter：源对象开始进入过程对象范围内。
-		dragover：源对象在过程对象范围内移动。
-		dragleave：源对象离开过程对象的范围。
-		目标对象：
-
-		drop：源对象被拖放到目标对象内。
+		<dl>
+			<dt>源对象：</dt>
+			<dd>dragstart：源对象开始拖放。</dd>
+			<dd>drag：源对象拖放过程中。</dd>
+			<dd>dragend：源对象拖放结束。</dd>
+			<dt>过程对象：</dt>
+			<dd>dragenter：源对象开始进入过程对象范围内。</dd>
+			<dd>dragover：源对象在过程对象范围内移动。</dd>
+			<dd>dragleave：源对象离开过程对象的范围。</dd>
+			<dt>目标对象：</dt>
+			<dd>drop：源对象被拖放到目标对象内。</dd>
+		</dl>
+		
 		<div class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 			<span id="drag1" draggable="true" ondragstart="drag(event)">被移动的文字</span>
 		</div>
@@ -89,19 +89,30 @@
 			var draglist = document.getElementById('draglist'),
 				dragitem = draglist.getElementsByTagName('li');
 			var evTarget = null;
+
+			draglist.ondragstart = function(e){
+				console.log(e.type);
+			};
+			draglist.ondragend = function(e){
+				console.log(e.type);
+			};
 			draglist.ondrag = function(e){
+				console.log(e.type);
 				evTarget = e.target;
 			};
 			var dustbin = document.getElementById('dustbin');
 			dustbin.ondragenter = function(e){
+				console.log(e.type);
 				e.preventDefault();
 				return true;
 			}
 			dustbin.ondragover = function(e){
+				console.log(e.type);
 				e.preventDefault();
 				return true;
 			}
 			dustbin.ondrop = function(e){
+				console.log(e.type);
 				e.preventDefault();
 				evTarget.parentNode.removeChild(evTarget);
 				return false;

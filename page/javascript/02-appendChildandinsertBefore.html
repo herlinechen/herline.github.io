@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>js DOM appendChild and insertBefore</title>
+</head>
+<body>
+	<div class='main'>
+		<ul id='list'>
+			<li>1111111111</li>
+			<li>2222222</li>
+			<li>333333333</li>
+			<li>44444444444444</li>
+			<li>555555555</li>
+			<li>666666666666</li>
+		</ul>
+		<p><button onclick='appElement()'>appendChild</button>:新建一个元素并插入到列表里。appendChild只需要<b>一个参数</b>。插入元素后会自动更新对子元素的查找结果，即items自动更新</p>
+		<p><button onclick='insertElement()'>insertBefore</button>:新建一个元素并插入到列表里。insertBefore需要<b>两个参数</b>。必须指定第二个参数，即已存在的某个子元素作为参照。插入元素后会自动更新对子元素的查找结果，即items自动更新</p>
+		<p><button onclick='moveElementByAppendChild()'>appendChild 迁移 </button>:将列表里已有的某个元素迁移到最后</p>
+		<p><button onclick='moveElementByinsertBefore()'>insertBefore 迁移 </button>:将列表里某个元素迁移到某个元素的前面(相同父级)</p>
+	</div>
+	<script>
+		var list = document.getElementById('list'),
+			items = list.getElementsByTagName('li');
+		function appElement(){
+			var ele = document.createElement('li');
+			ele.innerHTML = 'new Element---appendChild';
+			list.appendChild(ele);
+			console.log(items);
+		}
+		function insertElement(){
+			var ele = document.createElement('li');
+			ele.innerHTML = 'new Element---insertBefore';
+			list.insertBefore(ele,items[0]);
+			console.log(items);
+		}
+		function moveElementByAppendChild(){
+			list.appendChild(items[2]);
+		}
+		function moveElementByinsertBefore(){
+			list.insertBefore(items[2],items[5]);
+		}
+	</script>
+</body>
+</html>

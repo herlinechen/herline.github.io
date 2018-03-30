@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>XMLHttpRequest</title>
+</head>
+<body>
+	<div class='main'>
+		<p>onloadstart:在req.send()方法调用后触发</p>
+		<p></p>
+	</div>
+	<script>
+	console.log(document.cookie);
+		var req = new XMLHttpRequest();
+		req.open('GET','/herlinechen.github.io/resource/data/response.txt');
+		//像html表单那样post数据,需要设置RequestHeader为applicatoin/x-www-form-urlencoded.当有文件上传的时候content-type为multipart/form-data. 在send()方法中添加要发送的数据
+		//req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		//req.send('fname=Henry&lname=Ford');
+		req.timeout = 2000;
+		req.send();
+		//XMLHttpRequest对象事件：onloadstart, onload, onprogess, onloadend,onerror, ontimeout,onabort(撤销、中止), onreadystatechange
+		req.onload = function(){
+			console.log(req.status);
+		}
+		//注册onreadystatechange事件
+		req.onreadystatechange = function(a){
+			console.log(req);
+			if(req.readyState == 4 && req.status == 200){
+				document.body.innerHTML += req.responseText;
+			}
+		};
+
+	</script>
+</body>
+</html>
